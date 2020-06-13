@@ -6,7 +6,7 @@ resources:
       path: tsuyo-cicd/go-backend
       branches:
         include: master
-      gitProvider: myGitHub
+      gitProvider: tsuyo_github
        
   # Build info for the published Go module
   - name: cicd_go_build_info_module
