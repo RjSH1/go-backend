@@ -1,0 +1,25 @@
+resources:
+  # Sample Go app in a GitRepo
+  - name: cicd_go_backend
+    type: GitRepo
+    configuration:
+      path: tsuyo-cicd/go-backend
+      branches:
+        include: master
+      gitProvider: myGitHub
+       
+  # Build info for the published Go module
+  - name: cicd_go_build_info_module
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: myArtifactory
+      buildName: cicd_go_build_info_module
+      buildNumber: 332
+       
+  # Build info for the published Go app
+  - name: cicd_go_build_info
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: myArtifactory
+      buildName: cicd_go_build_info
+      buildNumber: 1

@@ -1,0 +1,52 @@
+pipelines:
+  - name: cicd_go_backend_build
+    steps:
+      # Build the Go sample app from the GitRepo
+      - name: cicd_go_build
+        type: GoBuild
+        configuration:
+          affinityGroup: goGroup
+          sourceLocation: .
+          repository: cicd-go-local # TODO: should be remote or virtual
+          outputLocation: /tmp/dist
+          outputFile: go_backend
+          inputResources:
+            - name: cicd_go_backend
+          integrations:
+            - name: myArtifactory
+             
+      # Publish the Go sample app binary to Artifactory
+      - name: cicd_go_publish_binary
+        type: GoPublishBinary
+        configuration:
+          affinityGroup: goGroup
+          inputSteps:
+            - name: cicd_go_build
+          targetRepository: cicd-go-local
+          integrations:
+            - name: myArtifactory
+             
+      # Publish the Go sample app build info
+      - name: cicd_publish_build_info
+        type: PublishBuildInfo
+        configuration:
+          affinityGroup: goGroup
+          inputSteps:
+            - name: cicd_go_publish_binary
+          outputResources:
+            - name: cicd_go_build_info
+             
+      # Publish the Go module from the GitRepo
+      # - name: cicd_go_publish_module
+      #   type: GoPublishModule
+      #   configuration:
+      #     sourceLocation: .
+      #     version: v0.0.0
+      #     targetRepository: cicd-go-local
+      #     autoPublishBuildInfo: true
+      #     integrations:
+      #       - name: myArtifactory
+      #     inputResources:
+      #       - name: cicd_go_backend
+      #     outputResources:
+      #       - name: go_build_info_publish_module
