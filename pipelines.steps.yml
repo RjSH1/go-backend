@@ -57,4 +57,4 @@ pipelines:
           inputResources:
             - name: cicd_go_backend
           outputResources:
-            - name: go_build_info_publish_module
+            - name: cicd_go_build_info_module
