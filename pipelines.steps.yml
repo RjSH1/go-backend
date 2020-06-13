@@ -1,5 +1,13 @@
 pipelines:
   - name: cicd_go_backend_build
+    configuration:
+      runtime:
+        type: image
+        image:
+          auto:
+            language: go
+            versions:
+              - "1.13.7"  
     steps:
       # Build the Go sample app from the GitRepo
       - name: cicd_go_build
