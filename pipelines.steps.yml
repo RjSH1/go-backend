@@ -7,7 +7,7 @@ pipelines:
         configuration:
           affinityGroup: goGroup
           sourceLocation: .
-          repository: cicd-go-local # TODO: should be remote or virtual
+          repository: cicd-go
           outputLocation: /tmp/dist
           outputFile: go_backend
           inputResources:
