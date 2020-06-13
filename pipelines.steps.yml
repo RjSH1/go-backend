@@ -7,7 +7,7 @@ pipelines:
           auto:
             language: go
             versions:
-              - "1.12.14"  
+              - "1.12.14" # this is required for ubuntu16 node pool
     steps:
       # Build the Go sample app from the GitRepo
       - name: cicd_go_build
@@ -45,16 +45,16 @@ pipelines:
             - name: cicd_go_build_info
              
       # Publish the Go module from the GitRepo
-      # - name: cicd_go_publish_module
-      #   type: GoPublishModule
-      #   configuration:
-      #     sourceLocation: .
-      #     version: v0.0.0
-      #     targetRepository: cicd-go-local
-      #     autoPublishBuildInfo: true
-      #     integrations:
-      #       - name: myArtifactory
-      #     inputResources:
-      #       - name: cicd_go_backend
-      #     outputResources:
-      #       - name: go_build_info_publish_module
+      - name: cicd_go_publish_module
+        type: GoPublishModule
+        configuration:
+          sourceLocation: .
+          version: v0.0.0
+          targetRepository: cicd-go-local
+          autoPublishBuildInfo: true
+          integrations:
+            - name: myArtifactory
+          inputResources:
+            - name: cicd_go_backend
+          outputResources:
+            - name: go_build_info_publish_module
