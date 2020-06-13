@@ -48,6 +48,7 @@ pipelines:
       - name: cicd_go_publish_module
         type: GoPublishModule
         configuration:
+          affinityGroup: goGroup
           sourceLocation: .
           version: v0.0.0
           targetRepository: cicd-go-local
