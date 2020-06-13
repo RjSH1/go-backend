@@ -29,7 +29,8 @@ pipelines:
         configuration:
           affinityGroup: goGroup
           inputSteps:
-            - name: cicd_go_build
+            # - name: cicd_go_build
+            - name: cicd_go_publish_module
           targetRepository: cicd-go-local
           integrations:
             - name: myArtifactory
@@ -54,9 +55,7 @@ pipelines:
           autoPublishBuildInfo: true
           integrations:
             - name: myArtifactory
-          # inputResources:
-          #   - name: cicd_go_backend
-          inputSteps:
-            - name: cicd_publish_build_info
+          inputResources:
+            - name: cicd_go_backend
           outputResources:
             - name: cicd_go_build_info_module
