@@ -8,18 +8,18 @@ resources:
         include: master
       gitProvider: tsuyo_github
        
-  # Build info for the published Go module
+  # BuildInfo for the published Go module
   - name: cicd_go_backend_buildinfo_module
     type: BuildInfo
     configuration:
       sourceArtifactory: myArtifactory
-      buildName: cicd_go_backend_buildinfo_module # ignored see https://www.jfrog.com/jira/browse/PIPE-2387
-      buildNumber: 1                              # ignored see https://www.jfrog.com/jira/browse/PIPE-2387
+      buildName: cicd_go_backend_module # ignored see https://www.jfrog.com/jira/browse/PIPE-2387
+      buildNumber: 1                    # ignored see https://www.jfrog.com/jira/browse/PIPE-2387
        
-  # Build info for the published Go app
+  # BuildInfo for the published Go app
   - name: cicd_go_backend_buildinfo
     type: BuildInfo
     configuration:
       sourceArtifactory: myArtifactory
-      buildName: cicd_go_backend_buildinfo # ignored see https://www.jfrog.com/jira/browse/PIPE-2387
-      buildNumber: 1                       # ignored see https://www.jfrog.com/jira/browse/PIPE-2387
+      buildName: cicd_go_backend # ignored see https://www.jfrog.com/jira/browse/PIPE-2387
+      buildNumber: 1             # ignored see https://www.jfrog.com/jira/browse/PIPE-2387
