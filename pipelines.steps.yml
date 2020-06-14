@@ -23,7 +23,7 @@ pipelines:
           integrations:
             - name: myArtifactory
           environmentVariables:
-            CGO_ENABLED: 0
+            CGO_ENABLED: 0 # this is for GO cross compile
              
       # Publish the Go sample app binary to Artifactory
       - name: cicd_go_publish_binary
