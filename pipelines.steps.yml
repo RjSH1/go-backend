@@ -1,5 +1,5 @@
 pipelines:
-  - name: cicd_go_backend_build
+  - name: cicd_go_backend
     configuration:
       runtime:
         type: image
