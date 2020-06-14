@@ -19,7 +19,7 @@ pipelines:
           outputLocation: /tmp/dist
           outputFile: go_backend
           inputResources:
-            - name: cicd_go_backend
+            - name: cicd_go_backend_gitrepo
           integrations:
             - name: myArtifactory
              
@@ -42,7 +42,7 @@ pipelines:
           inputSteps:
             - name: cicd_go_publish_binary
           outputResources:
-            - name: cicd_go_build_info
+            - name: cicd_go_backend_buildinfo
              
       # Publish the Go module from the GitRepo
       - name: cicd_go_publish_module
@@ -55,6 +55,6 @@ pipelines:
           integrations:
             - name: myArtifactory
           inputResources:
-            - name: cicd_go_backend
+            - name: cicd_go_backend_gitrepo
           outputResources:
-            - name: cicd_go_build_info_module
+            - name: cicd_go_backend_buildinfo_module
