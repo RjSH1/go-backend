@@ -22,6 +22,8 @@ pipelines:
             - name: cicd_go_backend_gitrepo
           integrations:
             - name: myArtifactory
+          environmentVariables:
+            CGO_ENABLED: 0
              
       # Publish the Go sample app binary to Artifactory
       - name: cicd_go_publish_binary
