@@ -30,21 +30,24 @@ pipelines:
         type: GoPublishBinary
         configuration:
           affinityGroup: goGroup
+          autoPublishBuildInfo: true
           inputSteps:
             - name: cicd_go_build
           targetRepository: cicd-generic
           integrations:
             - name: myArtifactory
-             
-      # Publish the Go sample app build info
-      - name: cicd_publish_build_info
-        type: PublishBuildInfo
-        configuration:
-          affinityGroup: goGroup
-          inputSteps:
-            - name: cicd_go_publish_binary
           outputResources:
-            - name: cicd_go_backend_buildinfo
+            - name: cicd_go_backend_buildinfo  
+             
+      # # Publish the Go sample app build info
+      # - name: cicd_publish_build_info
+      #   type: PublishBuildInfo
+      #   configuration:
+      #     affinityGroup: goGroup
+      #     inputSteps:
+      #       - name: cicd_go_publish_binary
+      #     outputResources:
+      #       - name: cicd_go_backend_buildinfo
              
       # Publish the Go module from the GitRepo
       - name: cicd_go_publish_module
