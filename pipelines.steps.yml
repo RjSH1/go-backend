@@ -30,6 +30,7 @@ pipelines:
         type: GoPublishBinary
         configuration:
           affinityGroup: goGroup
+          forceXrayScan: true
           autoPublishBuildInfo: true
           inputSteps:
             - name: cicd_go_build
