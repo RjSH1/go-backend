@@ -56,7 +56,9 @@ pipelines:
           autoPublishBuildInfo: true
           integrations:
             - name: myArtifactory
-          inputResources:
-            - name: cicd_go_backend_gitrepo
+          inputSteps:
+            - name: cicd_go_build  
+          # inputResources:
+          #   - name: cicd_go_backend_gitrepo
           outputResources:
             - name: cicd_go_backend_buildinfo_module
