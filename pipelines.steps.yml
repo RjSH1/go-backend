@@ -31,6 +31,7 @@ pipelines:
         configuration:
           affinityGroup: goGroup
           forceXrayScan: true
+          failOnScan: false
           autoPublishBuildInfo: true
           inputSteps:
             - name: cicd_go_build
