@@ -58,7 +58,7 @@ pipelines:
             - name: myArtifactory
           inputSteps:
             - name: cicd_go_build  
-          # inputResources:
-          #   - name: cicd_go_backend_gitrepo
+          inputResources:
+            - name: cicd_go_backend_gitrepo
           outputResources:
             - name: cicd_go_backend_buildinfo_module
