@@ -30,7 +30,7 @@ pipelines:
         type: GoPublishBinary
         configuration:
           affinityGroup: goGroup
-          forceXrayScan: true
+          # forceXrayScan: true
           # failOnScan: false
           autoPublishBuildInfo: true
           inputSteps:
@@ -41,17 +41,17 @@ pipelines:
           outputResources:
             - name: cicd_go_backend_buildinfo
 
-      # # Xray Scan
-      # - name: scan_docker_build_info_backapp
-      #   type: XrayScan
-      #   configuration:
-      #     affinityGroup: goGroup
-      #     # failOnScan: false
-      #     inputResources:
-      #       - name: cicd_go_backend_buildinfo
-      #         # trigger: true
-      #     outputResources:
-      #       - name: cicd_go_backend_buildinfo_scanned
+      # Xray Scan
+      - name: scan_docker_build_info_backapp
+        type: XrayScan
+        configuration:
+          affinityGroup: goGroup
+          # failOnScan: false
+          inputResources:
+            - name: cicd_go_backend_buildinfo
+              # trigger: true
+          outputResources:
+            - name: cicd_go_backend_buildinfo_scanned
              
       # # Publish the Go sample app build info
       # - name: cicd_publish_build_info
