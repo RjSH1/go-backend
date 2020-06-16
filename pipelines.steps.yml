@@ -1,13 +1,13 @@
 pipelines:
   - name: cicd_go_backend
-    configuration:
-      runtime:
-        type: image
-        image:
-          auto:
-            language: go
-            versions:
-              - "1.12.14" # this is required for ubuntu16 node pool
+    # configuration:
+    #   runtime:
+    #     type: image
+    #     image:
+    #       auto:
+    #         language: go
+    #         versions:
+    #           - "1.12.14" # this is required for ubuntu16 node pool
     steps:
       # Build the Go sample app from the GitRepo
       - name: cicd_go_build
