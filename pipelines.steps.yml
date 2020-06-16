@@ -30,8 +30,8 @@ pipelines:
         type: GoPublishBinary
         configuration:
           affinityGroup: goGroup
-          forceXrayScan: true
-          failOnScan: false
+          # forceXrayScan: true
+          # failOnScan: false
           autoPublishBuildInfo: true
           inputSteps:
             - name: cicd_go_build
@@ -39,7 +39,19 @@ pipelines:
           integrations:
             - name: myArtifactory
           outputResources:
-            - name: cicd_go_backend_buildinfo  
+            - name: cicd_go_backend_buildinfo
+
+      # Xray Scan
+      - name: scan_docker_build_info_backapp
+        type: XrayScan
+        configuration:
+          affinityGroup: goGroup
+          # failOnScan: false
+          inputResources:
+            - name: cicd_go_backend_buildinfo
+              rigger: true
+          outputResources:
+            - name: cicd_go_backend_buildinfo_scanned
              
       # # Publish the Go sample app build info
       # - name: cicd_publish_build_info
@@ -62,7 +74,7 @@ pipelines:
           integrations:
             - name: myArtifactory
           inputSteps:
-            - name: cicd_go_build  
+            - name: cicd_go_build
           inputResources:
             - name: cicd_go_backend_gitrepo
           outputResources:
