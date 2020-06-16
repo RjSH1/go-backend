@@ -30,7 +30,7 @@ pipelines:
         type: GoPublishBinary
         configuration:
           affinityGroup: goGroup
-          # forceXrayScan: true
+          forceXrayScan: true
           # failOnScan: false
           autoPublishBuildInfo: true
           inputSteps:
