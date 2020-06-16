@@ -49,7 +49,7 @@ pipelines:
           # failOnScan: false
           inputResources:
             - name: cicd_go_backend_buildinfo
-              rigger: true
+              # trigger: true
           outputResources:
             - name: cicd_go_backend_buildinfo_scanned
              
