@@ -59,7 +59,7 @@ pipelines:
         configuration:
           targetRepository: cicd-generic-scanned
           includeDependencies: false
-          status: "SANDBOX_OK"
+          status: "Xray Scanned OK"
           comment: "Unit testing and Xray scan passed succesfully"
           copy: false
           inputResources:
