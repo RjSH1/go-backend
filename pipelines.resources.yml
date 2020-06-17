@@ -31,3 +31,11 @@ resources:
       sourceArtifactory: myArtifactory
       buildName: cicd_go_backend_scanned # ignored see https://www.jfrog.com/jira/browse/PIPE-2387
       buildNumber: 1                     # ignored see https://www.jfrog.com/jira/browse/PIPE-2387
+
+  # BuildInfo for the scanned Go app
+  - name: cicd_go_backend_buildinfo_promoted
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: myArtifactory
+      buildName: cicd_go_backend_promoted # ignored see https://www.jfrog.com/jira/browse/PIPE-2387
+      buildNumber: 1                      # ignored see https://www.jfrog.com/jira/browse/PIPE-2387
