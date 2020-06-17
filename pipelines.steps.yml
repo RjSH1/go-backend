@@ -111,6 +111,8 @@ pipelines:
           dockerImageName: 'artifactory1.tsuyo.org:8082/cicd-docker/cicd-go-backend'
           dockerImageTag: ${run_number}
           dockerOptions: --no-cache
+          inputSteps:
+            - name: cicd_xray_scan
           inputResources:
             - name: cicd_docker_build_gitrepo
             - name: cicd_docker_build_filespec_go_backend # this is required to get an env variable like ${res_cicd_docker_build_filespec_go_backend_resourcePath}
