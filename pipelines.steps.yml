@@ -100,3 +100,42 @@ pipelines:
       #       - name: cicd_go_backend_gitrepo
       #     outputResources:
       #       - name: cicd_go_backend_buildinfo_module
+
+      # Merge from docker-build
+      - name: cicd_docker_build_go_backend
+        type: DockerBuild
+        configuration:
+          affinityGroup: cicd_go_backend_group
+          dockerFileLocation: .
+          dockerFileName: go-backend.Dockerfile
+          dockerImageName: 'artifactory1.tsuyo.org:8082/cicd-docker/cicd-go-backend'
+          dockerImageTag: ${run_number}
+          dockerOptions: --no-cache
+          inputResources:
+            - name: cicd_docker_build_gitrepo
+            - name: cicd_docker_build_filespec_go_backend # this is required to get an env variable like ${res_cicd_docker_build_filespec_go_backend_resourcePath}
+          integrations:
+            - name: myArtifactory
+        execution:
+          onStart:
+            - pwd && ls -l
+            - echo "Source Location => ${res_cicd_docker_build_gitrepo_resourcePath}"
+            - ls -l ${res_cicd_docker_build_gitrepo_resourcePath}
+            - echo "FileSpec Location => ${res_cicd_docker_build_filespec_go_backend_resourcePath}"
+            - ls -l ${res_cicd_docker_build_filespec_go_backend_resourcePath}
+            - cp ${res_cicd_docker_build_filespec_go_backend_resourcePath}/* ${res_cicd_docker_build_gitrepo_resourcePath}/
+
+      - name: cicd_docker_push_go_backend
+        type: DockerPush
+        configuration:
+          affinityGroup: cicd_go_backend_group
+          targetRepository: cicd-docker
+          autoPublishBuildInfo: true
+          # forceXrayScan: true
+          # failOnScan: false
+          integrations:
+            - name: myArtifactory
+          inputSteps:
+            - name: cicd_docker_build_go_backend
+          outputResources:
+            - name: cicd_docker_build_buildinfo_go_backend      
