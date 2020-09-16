@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"os"
 
-	"rsc.io/quote/v3" // this is just for external dependency
+	// "rsc.io/quote/v3" // this is just for external dependency
 )
 
 type results struct {
