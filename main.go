@@ -21,7 +21,8 @@ type aQuote struct {
 
 // this is just for external dependency
 func Hello() string {
-	return quote.HelloV3()
+	// return quote.HelloV3()
+	return "Hello!"
 }
 
 func quoteOfTheDay(w http.ResponseWriter, req *http.Request) {
