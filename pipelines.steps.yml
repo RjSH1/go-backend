@@ -108,7 +108,7 @@ pipelines:
           affinityGroup: cicd_go_backend_group
           dockerFileLocation: .
           dockerFileName: go-backend.Dockerfile
-          dockerImageName: 'artifactory1.tsuyo.org:8082/cicd-docker/cicd-go-backend'
+          dockerImageName: 'kirasoa.jfrog.io/cicd-docker/cicd-go-backend'
           dockerImageTag: ${run_number}
           dockerOptions: --no-cache
           inputSteps:
