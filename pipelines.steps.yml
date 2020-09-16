@@ -1,13 +1,13 @@
 pipelines:
   - name: cicd_go_backend
-    configuration:
-      runtime:
-        type: image
-        image:
-          auto:
-            language: go
-            versions:
-              - "1.12.14" # 1.13 requires https authentication
+#    configuration:
+#      runtime:
+#        type: image
+#        image:
+#          auto:
+#            language: go
+#            versions:
+#              - "1.12.14" # 1.13 requires https authentication
     steps:
       # Build the Go sample app from the GitRepo
       - name: cicd_go_build
