@@ -36,7 +36,7 @@ pipelines:
       - name: cicd_go_publish_binary
         type: GoPublishBinary
         configuration:
-          affinityGroup: goGroup
+          # affinityGroup: goGroup
           # forceXrayScan: true
           # failOnScan: false
           autoPublishBuildInfo: true
