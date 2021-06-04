@@ -3,7 +3,7 @@ valuesFilePath: ./values.yml
 
 resources:
   # Sample Go app in a GitRepo
-  - name: go_repo
+  - name: go_repo1
     type: GitRepo
     configuration:
       path: {{ .Values.repoPath }}
@@ -12,7 +12,7 @@ resources:
       gitProvider: {{ .Values.gitProvider }}
 
   # Build info for the published Go app
-  - name: go_buildinfo
+  - name: go_buildinfo1
     type: BuildInfo
     configuration:
       sourceArtifactory: {{ .Values.artifactory }}    
@@ -28,7 +28,7 @@ pipelines:
           resolverRepo: go-virtual
           noRegistry: true
           inputResources:
-            - name: go_repo
+            - name: go_repo1
           integrations:
             - name: {{ .Values.artifactory }}
              
